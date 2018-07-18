@@ -7,12 +7,15 @@ var burger = {
         callback(res);
       });
     },
-    // The variables cols and vals are arrays.
+
+    
     insertOne: function(cols, vals, callback) {
       orm.insertOne("burgers", cols, vals, function(res) {
         callback(res);
       });
     },
+
+    
     updateOne: function(objColVals, condition, callback) {
       orm.updateOne("burgers", objColVals, condition, function(res) {
         callback(res);

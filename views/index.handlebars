@@ -2,75 +2,42 @@
 
 
 
-
+<div class="pic">
 <h1>Burgers!</h1>
+<img class = "pic2" src="assets/img/burger.jpg"></div>
 
+<div class ="wrapleft">
 <h2>Newly created!</h2>
 
 <ul>
   {{#each burgers}}
     {{#unless devoured}}
-      {{!-- {{> cats/cat-block sleep=true}} --}}
-      {{burgers}}
+      				  <div class="burger">
+						{{burger_name}} <span>#{{id}}</span>
+				    <form action="/{{id}}?_method=PUT" method="POST"> 
+            <input type="hidden" name="devoured" value="true">
+              <button type ="submit">DEVOUR</button>
+				    </form>
+				  </div>
     {{/unless}}
   {{/each}}
 </ul>
-
+</div>
 <h2>Burgers that were eaten!</h2>
 
 <ul>
   {{#each burgers}}
     {{#if devoured}}
-      {{!-- {{> cats/cat-block sleep=false}} --}}
-      {{burgers}}
+      {{burger_name}}
     {{/if}}
   {{/each}}
 </ul>
 
 <h2>Add a Burger</h2>
-<form class="create-form">
+	<div id="makeBurger">
+		<form action="/" method="POST">
+			<input id="makeBurger2" type="text" name="burger_name" devoured="0" placeholder="Create a burger">
+			<button id="submit-btn" type="submit">Submit</button>
+		</form>
+	</div>
 
-  <div class="form-group">
-    <label for="ca">New Burger Name:</label>
-    <input type="text" id="ca" name="burger_name" devoured = "0">
-  </div>
-
-  {{!-- <div class="form-group">
-    <label for="sleepy">Sleepy?</label><br>
-    <input type="radio" name="sleepy" value="1" checked> Sleepy!<br>
-    <input type="radio" name="sleepy" value="0"> Awake
-  </div> --}}
-
-  <button type="submit">Add Burger</button>
-</form>
-
-
-
-
-
-
-
-<script>
-
-          $(".create-form").on("submit", function(event) {
-    // Make sure to preventDefault on a submit event.
-    event.preventDefault();
-
-    var newBurger = {
-      burger_name: $("#ca").val().trim(),
-      devoured: false
-    };
-
-    // Send the POST request.
-    $.ajax("/api/burgers", {
-      type: "POST",
-      data: newBurger
-    }).then(
-      function() {
-        console.log("created new burger");
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
-  });
-</script>

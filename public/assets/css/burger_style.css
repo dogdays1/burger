@@ -1,0 +1,38 @@
+* {
+	box-sizing: border-box;	
+}
+
+body {
+  background-color: rgb(84, 116, 165);
+  font-family: Helvetica, Arial, sans-serif;
+}
+.pic {
+    text-align: center;
+}
+.pic2 {
+    height: 200px;
+    width: 350px;
+}
+
+ul {
+  padding: 0;
+}
+
+h2, h1 {
+  text-align: center;
+}
+
+.form-group {
+  margin: 0 auto;
+  margin-bottom: 5px;
+  width: 400px;
+}
+
+.wrapleft {
+  width: 50%;
+  float: left;
+  padding: 0px 0px 0px 30px;
+}
+#makeBurger {
+    text-align: center;
+}
