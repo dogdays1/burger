@@ -36,7 +36,8 @@ router.get("/", function(req, res) {
   
     burger.updateOne(
       {
-        devoured: req.body.devoured
+        // devoured: req.body.devoured
+        devoured: req.params.id
       },
       condition,
       function() {

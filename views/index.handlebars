@@ -1,43 +1,49 @@
-
-
-
-
 <div class="pic">
-<h1>Burgers!</h1>
-<img class = "pic2" src="assets/img/burger.jpg"></div>
+  <h1>Burgers!</h1>
+  <img class="pic2" src="assets/img/burger.jpg">
+</div>
 
-<div class ="wrapleft">
-<h2>Newly created!</h2>
+<div class="wrapleft">
+  <h2>Newly created!</h2>
 
-<ul>
-  {{#each burgers}}
-    {{#unless devoured}}
-      				  <div class="burger">
-						{{burger_name}} <span>#{{id}}</span>
-				    <form action="/{{id}}?_method=PUT" method="POST"> 
-            <input type="hidden" name="devoured" value="true">
-              <button type ="submit">DEVOUR</button>
-				    </form>
-				  </div>
-    {{/unless}}
-  {{/each}}
-</ul>
+  <ul>
+    {{#each burgers}} {{#unless devoured}}
+    <div class="burger">
+      {{burger_name}}
+      <span>#{{id}}</span>
+      {{!--
+      <form action="/{{id}}?_method=PUT" method="POST"> --}}
+        <input type="hidden" name="devoured" value="true">
+        <button id="dvr" type="submit">DEVOUR</button>
+      </form>
+    </div>
+    {{/unless}} {{/each}}
+  </ul>
 </div>
 <h2>Burgers that were eaten!</h2>
 
 <ul>
-  {{#each burgers}}
-    {{#if devoured}}
-      {{burger_name}}
-    {{/if}}
-  {{/each}}
+  {{#each burgers}} {{#if devoured}} {{burger_name}} {{/if}} {{/each}}
 </ul>
 
 <h2>Add a Burger</h2>
-	<div id="makeBurger">
-		<form action="/" method="POST">
-			<input id="makeBurger2" type="text" name="burger_name" devoured="0" placeholder="Create a burger">
-			<button id="submit-btn" type="submit">Submit</button>
-		</form>
-	</div>
-
+<div id="makeBurger">
+  <form action="/" method="POST">
+    <input id="makeBurger2" type="text" name="burger_name" devoured="0" placeholder="Create a burger">
+    <button id="submit-btn" type="submit">Submit</button>
+  </form>
+</div>
+<script>
+  $(document).ready(function () {
+    $("#dvr").on("click") function (event) {
+      event.preventDefault();
+      var currentURL = window.location.origin;
+      $.put(currentURL + "/:" + this.id, function (data) {
+        if (data) {
+          id: this.id;
+          devoured: true
+        }
+      }
+      }
+  }
+</script>
